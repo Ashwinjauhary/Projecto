@@ -1,0 +1,40 @@
+import type { Metadata } from 'next';
+import { Inter, Outfit } from "next/font/google";
+import "./globals.css";
+import { Providers } from "@/components/providers";
+import { Toaster } from "sonner";
+import { CustomCursor } from "@/components/portfolio/CustomCursor";
+import { SmoothScroll } from "@/components/portfolio/SmoothScroll";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+
+export const metadata: Metadata = {
+  title: "Projecto | Premium Portfolio & Project Hub",
+  description: "A high-end, interactive portfolio and project management hub built with Next.js and Supabase.",
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${inter.variable} ${outfit.variable} font-sans antialiased`}>
+        <Providers>
+          <SmoothScroll>
+            <CustomCursor />
+            {children}
+            <Toaster position="bottom-right" richColors />
+          </SmoothScroll>
+        </Providers>
+      </body>
+    </html>
+  );
+}

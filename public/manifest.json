@@ -1,0 +1,17 @@
+{
+    "name": "Projecto | Premium Portfolio",
+    "short_name": "Projecto",
+    "description": "A high-end, interactive portfolio and project management hub.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#020617",
+    "theme_color": "#020617",
+    "icons": [
+        {
+            "src": "/icon.png",
+            "sizes": "256x256",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
