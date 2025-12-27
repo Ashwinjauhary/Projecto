@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Tailwind CSS v4 custom variants and themes */
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -123,6 +124,7 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
@@ -131,6 +133,44 @@
     font-family: var(--font-outfit), sans-serif;
   }
 
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-dark {
+    @apply bg-slate-950/40 backdrop-blur-2xl border border-white/5 shadow-2xl;
+  }
+
+  /* Gradients */
+  .bg-gradient-premium {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #020617 100%);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600;
+  }
+
+  .bg-glow {
+    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+  }
+
+  /* Borders & Glows */
+  .border-glow {
+    @apply border border-cyan-500/20;
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
+  }
+
+  .border-glow-hover {
+    @apply transition-all duration-300;
+  }
+
+  .border-glow-hover:hover {
+    @apply border-cyan-500/40;
+    box-shadow: 0 0 25px rgba(34, 211, 238, 0.2);
+  }
+
+  /* Shimmer Effect */
   .shimmer {
     background: linear-gradient(90deg,
         transparent 0%,
@@ -148,5 +188,10 @@
     100% {
       background-position: 200% 0;
     }
+  }
+
+  /* Scroll Progress */
+  .scroll-progress {
+    @apply fixed top-0 left-0 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 z-[100] transition-transform duration-100 ease-out origin-left;
   }
 }

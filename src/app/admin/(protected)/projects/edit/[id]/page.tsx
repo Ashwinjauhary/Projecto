@@ -13,7 +13,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { toast } from 'sonner';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
-import { Database } from '@/lib/supabase/database.types';
+import { Database } from '@/lib/supabase/database_types';
 
 import { MediaUploader } from '@/components/admin/MediaUploader';
 
@@ -166,7 +166,7 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
                                 id="title"
                                 placeholder={project.repo_name}
                                 value={formData.title}
-                                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, title: e.target.value })}
                                 disabled={saving}
                             />
                             <p className="text-sm text-muted-foreground">
@@ -180,7 +180,7 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
                                 id="description"
                                 placeholder="A brief description of your project..."
                                 value={formData.description}
-                                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setFormData({ ...formData, description: e.target.value })}
                                 rows={4}
                                 disabled={saving}
                             />
@@ -196,7 +196,7 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
                                 type="url"
                                 placeholder="https://example.com"
                                 value={formData.live_url}
-                                onChange={(e) => setFormData({ ...formData, live_url: e.target.value })}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, live_url: e.target.value })}
                                 disabled={saving}
                             />
                         </div>
@@ -208,7 +208,7 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
                                     id="language"
                                     placeholder="TypeScript"
                                     value={formData.language}
-                                    onChange={(e) => setFormData({ ...formData, language: e.target.value })}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, language: e.target.value })}
                                     disabled={saving}
                                 />
                             </div>
@@ -219,7 +219,7 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
                                     id="topics"
                                     placeholder="react, nextjs, typescript"
                                     value={formData.topics}
-                                    onChange={(e) => setFormData({ ...formData, topics: e.target.value })}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, topics: e.target.value })}
                                     disabled={saving}
                                 />
                             </div>

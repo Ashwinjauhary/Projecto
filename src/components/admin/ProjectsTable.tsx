@@ -20,7 +20,7 @@ import { CSS } from '@dnd-kit/utilities';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Database } from '@/lib/supabase/database.types';
+import { Database } from '@/lib/supabase/database_types';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';

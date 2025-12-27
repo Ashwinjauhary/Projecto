@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase/client';
 import { Button } from '@/components/ui/button';
-import { LayoutDashboard, FolderGit2, LogOut } from 'lucide-react';
+import { LayoutDashboard, FolderGit2, LogOut, Mail, Settings } from 'lucide-react';
 import { toast } from 'sonner';
 
 export function AdminNav() {
@@ -26,8 +26,11 @@ export function AdminNav() {
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center gap-8">
-                        <Link href="/admin/dashboard" className="font-heading text-xl font-bold">
-                            Portfolio Admin
+                        <Link href="/admin/dashboard" className="flex items-center gap-3 group">
+                            <div className="w-10 h-10 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 p-1 bg-white">
+                                <img src="/icon.png" alt="Logo" className="w-full h-full object-contain" />
+                            </div>
+                            <span className="font-heading text-xl font-bold">Admin Hub</span>
                         </Link>
                         <div className="flex gap-4">
                             <Link
@@ -43,6 +46,20 @@ export function AdminNav() {
                             >
                                 <FolderGit2 className="w-4 h-4" />
                                 Projects
+                            </Link>
+                            <Link
+                                href="/admin/inbox"
+                                className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                            >
+                                <Mail className="w-4 h-4" />
+                                Inbox
+                            </Link>
+                            <Link
+                                href="/admin/settings"
+                                className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                            >
+                                <Settings className="w-4 h-4" />
+                                Settings
                             </Link>
                         </div>
                     </div>

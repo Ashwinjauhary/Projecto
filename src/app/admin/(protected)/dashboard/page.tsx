@@ -13,6 +13,8 @@ export default async function DashboardPage() {
         visible: projects.filter((p: any) => p.visible).length,
         featured: projects.filter((p: any) => p.featured).length,
         totalStars: projects.reduce((acc: number, p: any) => acc + (p.stars || 0), 0),
+        totalViews: projects.reduce((acc: number, p: any) => acc + (p.view_count || 0), 0),
+        totalClicks: projects.reduce((acc: number, p: any) => acc + (p.click_count || 0), 0),
     };
 
     return (
@@ -20,53 +22,49 @@ export default async function DashboardPage() {
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="font-heading text-4xl font-bold">Dashboard</h1>
-                    <p className="text-muted-foreground mt-2">
-                        Manage your portfolio projects and content
+                    <p className="text-muted-foreground mt-2 italic">
+                        Real-time intelligence for your Projecto artifacts.
                     </p>
                 </div>
                 <SyncButton />
             </div>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <Card className="glass-dark border-white/5 relative overflow-hidden group">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Total Projects</CardTitle>
-                        <FolderGit2 className="h-4 w-4 text-muted-foreground" />
+                        <CardTitle className="text-sm font-bold uppercase tracking-widest text-slate-400">Total Projects</CardTitle>
+                        <FolderGit2 className="h-4 w-4 text-cyan-400" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-3xl font-bold">{stats.total}</div>
+                        <div className="text-3xl font-black text-white italic">{stats.total}</div>
+                        <p className="text-[10px] text-slate-500 uppercase mt-1 tracking-wider">{stats.visible} visible • {stats.featured} featured</p>
                     </CardContent>
+                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-cyan-500/20 to-transparent" />
                 </Card>
 
-                <Card>
+                <Card className="glass-dark border-white/5 relative overflow-hidden group">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Visible</CardTitle>
-                        <Eye className="h-4 w-4 text-muted-foreground" />
+                        <CardTitle className="text-sm font-bold uppercase tracking-widest text-slate-400">Project Reach</CardTitle>
+                        <Eye className="h-4 w-4 text-purple-400" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-3xl font-bold">{stats.visible}</div>
+                        <div className="text-3xl font-black text-white italic">{stats.totalViews}</div>
+                        <p className="text-[10px] text-slate-500 uppercase mt-1 tracking-wider">Total Artifact Views</p>
                     </CardContent>
+                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-purple-500/20 to-transparent" />
                 </Card>
 
-                <Card>
+                <Card className="glass-dark border-white/5 relative overflow-hidden group">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Featured</CardTitle>
-                        <Star className="h-4 w-4 text-muted-foreground" />
+                        <CardTitle className="text-sm font-bold uppercase tracking-widest text-slate-400">Engagement</CardTitle>
+                        <TrendingUp className="h-4 w-4 text-pink-400" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-3xl font-bold">{stats.featured}</div>
+                        <div className="text-3xl font-black text-white italic">{stats.totalClicks}</div>
+                        <p className="text-[10px] text-slate-500 uppercase mt-1 tracking-wider">Total Link Clicks</p>
                     </CardContent>
-                </Card>
-
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Total Stars</CardTitle>
-                        <TrendingUp className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-3xl font-bold">{stats.totalStars}</div>
-                    </CardContent>
+                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-pink-500/20 to-transparent" />
                 </Card>
             </div>
 

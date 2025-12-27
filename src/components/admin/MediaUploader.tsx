@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { Image as ImageIcon, Video, X, Upload, Loader2, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
-import { Database } from '@/lib/supabase/database.types';
+import { Database } from '@/lib/supabase/database_types';
 
 type ProjectMedia = Database['public']['Tables']['project_media']['Row'];
 

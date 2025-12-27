@@ -3,16 +3,9 @@
 import { useState } from 'react';
 import { ProjectCard } from './ProjectCard';
 import { ProjectModal } from '@/components/portfolio/ProjectModal';
-import { Database } from '@/lib/supabase/database.types';
+import { Database } from '@/lib/supabase/database_types';
 
-type Project = Database['public']['Tables']['projects']['Row'] & {
-    project_media?: Array<{
-        id: string;
-        type: 'image' | 'video';
-        url: string;
-        order_index: number;
-    }>;
-};
+import { Project } from '@/types/portfolio';
 
 interface ProjectGridProps {
     projects: Project[];
@@ -49,6 +42,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                 <div className="flex flex-wrap gap-4 justify-center mb-12">
                     <button
                         onClick={() => setFilter('all')}
+                        suppressHydrationWarning
                         className={`px-6 py-2 rounded-full font-medium transition-all ${filter === 'all'
                             ? 'bg-primary text-primary-foreground shadow-lg'
                             : 'bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700'
@@ -58,6 +52,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                     </button>
                     <button
                         onClick={() => setFilter('featured')}
+                        suppressHydrationWarning
                         className={`px-6 py-2 rounded-full font-medium transition-all ${filter === 'featured'
                             ? 'bg-primary text-primary-foreground shadow-lg'
                             : 'bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700'
@@ -89,7 +84,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
             {selectedProject && (
                 <ProjectModal
                     project={selectedProject}
-                    open={!!selectedProject}
+                    isOpen={!!selectedProject}
                     onClose={() => setSelectedProject(null)}
                 />
             )}

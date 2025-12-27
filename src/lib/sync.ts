@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { fetchGitHubRepos, GitHubRepo } from './github';
-import { Database } from './supabase/database.types';
+import { Database } from './supabase/database_types';
+import { Project as PortfolioProject } from '@/types/portfolio';
 
 type Project = Database['public']['Tables']['projects']['Row'];
 type ProjectInsert = Database['public']['Tables']['projects']['Insert'];
@@ -87,7 +88,7 @@ export async function syncGitHubRepos(username: string) {
 /**
  * Get all visible projects for public display
  */
-export async function getPublicProjects() {
+export async function getPublicProjects(): Promise<PortfolioProject[]> {
     const supabase = await createClient();
 
     const { data: projects, error } = await supabase
@@ -103,13 +104,13 @@ export async function getPublicProjects() {
         throw new Error(`Failed to fetch projects: ${error.message}`);
     }
 
-    return projects || [];
+    return (projects as any) || [];
 }
 
 /**
  * Get all projects for admin panel
  */
-export async function getAllProjects() {
+export async function getAllProjects(): Promise<PortfolioProject[]> {
     const supabase = await createClient();
 
     const { data: projects, error } = await supabase
@@ -124,13 +125,13 @@ export async function getAllProjects() {
         throw new Error(`Failed to fetch projects: ${error.message}`);
     }
 
-    return projects || [];
+    return (projects as any) || [];
 }
 
 /**
  * Get a single project by ID
  */
-export async function getProjectById(id: string) {
+export async function getProjectById(id: string): Promise<PortfolioProject> {
     const supabase = await createClient();
 
     const { data: project, error } = await supabase
@@ -146,5 +147,5 @@ export async function getProjectById(id: string) {
         throw new Error(`Failed to fetch project: ${error.message}`);
     }
 
-    return project;
+    return project as any;
 }

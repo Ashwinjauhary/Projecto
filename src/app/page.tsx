@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import { Hero } from '@/components/portfolio/Hero';
 import { ProjectGrid } from '@/components/portfolio/ProjectGrid';
-import { TechMarquee } from '@/components/portfolio/TechMarquee';
 import { LoadingGrid } from '@/components/portfolio/LoadingGrid';
 import { Contact } from '@/components/portfolio/Contact';
 import { getPublicProjects } from '@/lib/sync';
@@ -73,8 +72,6 @@ export default async function Home() {
     <main className="min-h-screen bg-white dark:bg-slate-950">
       <Hero />
 
-      <TechMarquee />
-
       <Suspense fallback={<LoadingGrid />}>
         <ProjectsSection />
       </Suspense>
@@ -82,8 +79,11 @@ export default async function Home() {
       <Contact />
 
       {/* Footer */}
-      <footer className="py-20 border-t border-slate-200 dark:border-slate-800 text-center text-muted-foreground">
-        <div className="container mx-auto">
+      <footer className="py-20 border-t border-slate-200 dark:border-slate-800 text-center text-muted-foreground bg-slate-50 dark:bg-slate-950/50">
+        <div className="container mx-auto px-4 flex flex-col items-center gap-6">
+          <div className="w-12 h-12 rounded-xl overflow-hidden grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+            <img src="/icon.png" alt="Logo" className="w-full h-full object-contain" />
+          </div>
           <p>© {new Date().getFullYear()} Creative Portfolio. Built with Next.js, Framer Motion & Supabase.</p>
         </div>
       </footer>

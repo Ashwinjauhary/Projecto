@@ -52,7 +52,7 @@ export default function CreateProjectPage() {
                 stars: 0,
                 forks: 0,
                 order_index: 0,
-            } as any);
+            });
 
             if (error) throw error;
 
@@ -97,7 +97,7 @@ export default function CreateProjectPage() {
                                 id="repo_name"
                                 placeholder="my-awesome-project"
                                 value={formData.repo_name}
-                                onChange={(e) => setFormData({ ...formData, repo_name: e.target.value })}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, repo_name: e.target.value })}
                                 required
                                 disabled={loading}
                             />
@@ -112,7 +112,7 @@ export default function CreateProjectPage() {
                                 id="title"
                                 placeholder="My Awesome Project"
                                 value={formData.title}
-                                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, title: e.target.value })}
                                 disabled={loading}
                             />
                             <p className="text-sm text-muted-foreground">
@@ -126,7 +126,7 @@ export default function CreateProjectPage() {
                                 id="description"
                                 placeholder="A brief description of your project..."
                                 value={formData.description}
-                                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setFormData({ ...formData, description: e.target.value })}
                                 rows={4}
                                 disabled={loading}
                             />
@@ -142,7 +142,7 @@ export default function CreateProjectPage() {
                                     type="url"
                                     placeholder="https://github.com/username/repo"
                                     value={formData.github_url}
-                                    onChange={(e) => setFormData({ ...formData, github_url: e.target.value })}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, github_url: e.target.value })}
                                     required
                                     disabled={loading}
                                 />
@@ -155,7 +155,7 @@ export default function CreateProjectPage() {
                                     type="url"
                                     placeholder="https://example.com"
                                     value={formData.live_url}
-                                    onChange={(e) => setFormData({ ...formData, live_url: e.target.value })}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, live_url: e.target.value })}
                                     disabled={loading}
                                 />
                             </div>
@@ -168,7 +168,7 @@ export default function CreateProjectPage() {
                                     id="language"
                                     placeholder="TypeScript"
                                     value={formData.language}
-                                    onChange={(e) => setFormData({ ...formData, language: e.target.value })}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, language: e.target.value })}
                                     disabled={loading}
                                 />
                             </div>
@@ -179,7 +179,7 @@ export default function CreateProjectPage() {
                                     id="topics"
                                     placeholder="react, nextjs, typescript"
                                     value={formData.topics}
-                                    onChange={(e) => setFormData({ ...formData, topics: e.target.value })}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, topics: e.target.value })}
                                     disabled={loading}
                                 />
                             </div>

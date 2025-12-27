@@ -4,16 +4,9 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Github, Star, GitFork } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Database } from '@/lib/supabase/database.types';
-
-type Project = Database['public']['Tables']['projects']['Row'] & {
-    project_media?: Array<{
-        id: string;
-        type: 'image' | 'video';
-        url: string;
-        order_index: number;
-    }>;
-};
+import { Database } from '@/lib/supabase/database_types';
+import { trackProjectClick } from '@/lib/supabase/analytics';
+import { Project } from '@/types/portfolio';
 
 interface ProjectCardProps {
     project: Project;
@@ -21,7 +14,7 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, onClick }: ProjectCardProps) {
-    const mainMedia = project.project_media?.sort((a, b) => a.order_index - b.order_index)[0];
+    const mainMedia = project.project_media?.sort((a: any, b: any) => a.order_index - b.order_index)[0];
 
     return (
         <motion.div
@@ -98,7 +91,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
 
                     {project.topics && project.topics.length > 0 && (
                         <div className="flex flex-wrap gap-2">
-                            {project.topics.slice(0, 5).map((topic) => (
+                            {project.topics.slice(0, 5).map((topic: string) => (
                                 <Badge key={topic} variant="secondary" className="text-xs">
                                     {topic}
                                 </Badge>
@@ -125,10 +118,13 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
 
                 <CardFooter className="flex gap-2">
                     <a
-                        href={project.github_url}
+                        href={project.github_url || ''}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            trackProjectClick(project.id);
+                        }}
                         className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors text-sm"
                     >
                         <Github className="w-4 h-4" />
@@ -136,10 +132,13 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
                     </a>
                     {project.live_url && (
                         <a
-                            href={project.live_url}
+                            href={project.live_url || ''}
                             target="_blank"
                             rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                trackProjectClick(project.id);
+                            }}
                             className="flex items-center gap-2 px-4 py-2 border-2 border-slate-900 text-slate-900 rounded-lg hover:bg-slate-900 hover:text-white transition-colors text-sm"
                         >
                             <ExternalLink className="w-4 h-4" />
