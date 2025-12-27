@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   title: "Projecto | Portfolio",
   description: "A premium, interactive portfolio showcase.",
   manifest: "/manifest.json",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
