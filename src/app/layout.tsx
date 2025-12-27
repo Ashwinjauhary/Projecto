@@ -12,13 +12,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
-  title: "Projecto | Premium Portfolio & Project Hub",
-  description: "A high-end, interactive portfolio and project management hub built with Next.js and Supabase.",
+  title: "Projecto | Portfolio",
+  description: "A premium, interactive portfolio showcase.",
   manifest: "/manifest.json",
-  icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
-  },
 };
 
 export default function RootLayout({
