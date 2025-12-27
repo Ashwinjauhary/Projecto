@@ -69,9 +69,14 @@ export default function LoginPage() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-4">
             <Card className="w-full max-w-md">
-                <CardHeader className="space-y-1">
+                <CardHeader className="space-y-4">
+                    <div className="flex justify-center">
+                        <div className="w-16 h-16 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 p-2">
+                            <img src="/icon.png" alt="Logo" className="w-full h-full object-contain" />
+                        </div>
+                    </div>
                     <CardTitle className="text-3xl font-heading font-bold text-center">
-                        Admin Login
+                        Admin Hub
                     </CardTitle>
                     <CardDescription className="text-center">
                         Sign in to manage your portfolio
